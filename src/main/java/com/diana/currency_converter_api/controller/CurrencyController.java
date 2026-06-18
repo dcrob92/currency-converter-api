@@ -7,6 +7,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
@@ -17,6 +19,7 @@ public class CurrencyController {
 
     private final CurrencyService service;
 
+    @Operation(summary = "Crear una nueva divisa")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CurrencyResponse create(
@@ -25,12 +28,14 @@ public class CurrencyController {
         return service.create(request);
     }
 
+    @Operation(summary = "Listar todas las divisas")
     @GetMapping
     public List<CurrencyResponse> findAll() {
 
         return service.findAll();
     }
 
+    @Operation(summary = "Buscar divisa por ID")
     @GetMapping("/{id}")
     public CurrencyResponse findById(
             @PathVariable Long id) {
@@ -38,6 +43,8 @@ public class CurrencyController {
         return service.findById(id);
     }
 
+    @Tag(name = "Divisas", description = "Operaciones relacionadas con divisas")
+    @Operation(summary = "Actualizar divisa existente")
     @PutMapping("/{id}")
     public CurrencyResponse update(
             @PathVariable Long id,
@@ -46,6 +53,8 @@ public class CurrencyController {
         return service.update(id, request);
     }
 
+    @Tag(name = "Divisas", description = "Operaciones relacionadas con divisas")
+    @Operation(summary = "Eliminar divisa existente")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(
