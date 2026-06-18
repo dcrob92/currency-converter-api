@@ -84,7 +84,7 @@ public class CurrentServiceImpl implements CurrencyService {
                                     .orElseThrow(() -> new CurrencyNotFoundException("Divisa de destino no encontrada: " + targetCode));
                             return request.amount()
                                     .multiply(targetCurrency.getExchangeRate())
-                                    .divide(sourceCurrency.getExchangeRate(), RoundingMode.HALF_UP);
+                                    .divide(sourceCurrency.getExchangeRate(), 4 ,RoundingMode.HALF_UP);
                         }
                 ));
 
