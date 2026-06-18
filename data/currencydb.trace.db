@@ -1,3 +1,0 @@
-2026-06-18 06:01:06.231284-05:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CURRENCIES" not found (this database is empty); SQL statement:
-INSERT INTO currencies(code,name,exchange_rate,active) VALUES ('USD','US Dollar',1.00,true) [42104-232]
